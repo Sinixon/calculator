@@ -1,9 +1,10 @@
 :root {
-    --border: #699;
+    --border: black;
     --calculator: beige;
     --calculator: #699;
     --screen: rgb(200, 195, 195);
     --button: beige;
+    --radius: 5px;
 }
 
 .main {
@@ -28,11 +29,12 @@
 
 .screen {
     text-align: right;
-    padding: 10px 20px;
+    padding: 20px;
     margin-bottom: 10px;
     background-color: var(--screen);
     border: solid var(--border);
     border-radius: 15px;
+    font-size: 20px;
 }
 
 .buttonsGrid {
@@ -41,12 +43,19 @@
     grid-gap: 10px;
 }
 
-.span-2 {
+.span-2-button {
     grid-column: span 2;
+    background-color: rgba(255, 106, 106, 0.896);
 }
 
 button {
     border-radius: 15px;
     border: solid var(--border);
     background-color: var(--button);
+    padding: 20px;
+    font-size: 19px;
+}
+
+.colored-button {
+    background-color: rgba(245, 245, 220, 0.487);
 }
