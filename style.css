@@ -29,16 +29,27 @@
 
 .screen {
     text-align: right;
-    padding: 35px 20px 20px 20px;
+    padding: 10px 20px;
     margin-bottom: 10px;
     background-color: var(--screenColor);
     border: solid var(--borderColor);
+    border-radius: var(--radius);
+    font-size: 20px;
+}
+
+.screen-last {
+    min-height: 32px;
+    font-size: 20px;
+}
+
+.screen-current {
+    min-height: 55px;
+    font-size: 40px;
 }
 
 .buttonsGrid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
 }
 
 .span-2-button {
