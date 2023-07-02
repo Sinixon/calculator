@@ -24,7 +24,7 @@ clearButton.addEventListener('click', clearScreen);
 // call evaluate function when equalsButton is clicked
 equalsButton.addEventListener('click', evaluate);
 // Test for the dot button
-dotButton.addEventListener('click', () => console.log('test'));
+dotButton.addEventListener('click', appendDot);
 
 // numberButton Listener
 numberButtons.forEach((button) =>
@@ -78,7 +78,14 @@ function clearScreen() {
 };
 
 function appendDot() {
-  // No logic for now.
+    if (shouldResetScreen) resetScreen();
+    if (currentOperationScreen.textContent === '') {
+        currentOperationScreen.textContent = '0';
+    };
+    if (currentOperationScreen.textContent.includes('.')) {
+        return;
+    };
+    currentOperationScreen.textContent += '.';
 };
 
 function roundResult(number) {
