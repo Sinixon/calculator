@@ -1,4 +1,5 @@
 // declaratie van variabelen om de getallen en de operator voor de bewerking te bevatten
+let firstOperand = '';
 let num1;
 let operator;
 let num2;
@@ -37,7 +38,10 @@ function appendNumber(number) {
 };
 
 function appendOperator(operator) {
-    lastOperationScreen.textContent += operator;
+    firstOperand = currentOperationScreen.textContent;
+    currentOperator = operator;
+    lastOperationScreen.textContent = `${firstOperand} ${currentOperator}`;
+    shouldResetScreen = true;
 };
 
 function resetScreen() {
