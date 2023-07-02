@@ -3,24 +3,31 @@ let num1;
 let operator;
 let num2;
 
+const numberButtons = document.querySelectorAll('[data-number]');
+const operatorButtons = document.querySelectorAll('[data-operator]');
+
+numberButtons.forEach((button) =>
+    button.addEventListener('click', () => console.log(69))
+);
+
 // Deze functie voert een bewerking uit (toevoegen, aftrekken, vermenigvuldigen, delen) op twee getallen, afhankelijk van de operator
 function operate(num1, num2, operator) {
-    // controleren of de operator een plus-teken is en zo ja, de add functie aanroepen
-    if (operator === "+") {
-        return add(num1, num2);
-    };
-    // controleren of de operator een min-teken is en zo ja, de subtract functie aanroepen
-    if (operator === "-") {
-        return subtract(num1, num2);
-    };
-    // controleren of de operator een vermenigvuldigingsteken is en zo ja, de multiply functie aanroepen
-    if (operator === "*") {
-        return multiply(num1, num2);
-    };
-    // controleren of de operator een deel-teken is en zo ja, de divide functie aanroepen
-    if (operator === "/") {
-        return divide(num1, num2);
-    };
+    num1 = Number(num1);
+    num2 = Number(num2);
+
+    switch (operator) {
+        case "+":
+            return add(num1, num2);
+        case "-":
+            return subtract(num1, num2);
+        case "*":
+            return multiply(num1, num2);
+        case "/":
+            if (num2 === 0) return null;
+            else return divide(num1, num2);
+        default:
+            return null;
+    }
 };
 
 // Functie die twee getallen bij elkaar optelt
