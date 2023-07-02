@@ -2,9 +2,6 @@
 let firstOperand = '';
 let secondOperand = '';
 let currentOperator = null;
-let num1;
-let operator;
-let num2;
 let shouldResetScreen = false;
 
 // Nodelist
@@ -15,6 +12,8 @@ const operatorButtons = document.querySelectorAll('[data-operator]');
 const clearButton = document.getElementById('clearButton');
 // Tag equals button
 const equalsButton = document.getElementById('equalsButton');
+// Tag dot button
+const dotButton = document.getElementById('dotButton');
 // Tag last operation screen
 const lastOperationScreen = document.getElementById('lastOperationScreen');
 // Tag current operation screen
@@ -24,6 +23,8 @@ const currentOperationScreen = document.getElementById('currentOperationScreen')
 clearButton.addEventListener('click', clearScreen);
 // call evaluate function when equalsButton is clicked
 equalsButton.addEventListener('click', evaluate);
+// Test for the dot button
+dotButton.addEventListener('click', () => console.log('test'));
 
 // numberButton Listener
 numberButtons.forEach((button) =>
@@ -57,7 +58,9 @@ function evaluate() {
         return;
     };
     secondOperand = currentOperationScreen.textContent;
-    currentOperationScreen.textContent = operate(firstOperand, secondOperand, currentOperator);
+    currentOperationScreen.textContent = roundResult(
+        operate(firstOperand, secondOperand, currentOperator)
+    );
     lastOperationScreen.textContent = `${firstOperand} ${currentOperator} ${secondOperand} =`;
 };
 
@@ -72,6 +75,14 @@ function clearScreen() {
     firstOperand = '';
     secondOperand = '';
     currentOperator = null;
+};
+
+function appendDot() {
+  // No logic for now.
+};
+
+function roundResult(number) {
+    return Math.round(number * 1000) / 1000;
 };
 
 // Deze functie voert een bewerking uit (toevoegen, aftrekken, vermenigvuldigen, delen) op twee getallen, afhankelijk van de operator
