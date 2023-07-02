@@ -1,5 +1,6 @@
 // declaratie van variabelen om de getallen en de operator voor de bewerking te bevatten
 let firstOperand = '';
+let secondOperand = '';
 let currentOperator = null;
 let num1;
 let operator;
@@ -42,7 +43,7 @@ function appendNumber(number) {
 };
 
 function setOperator(operator) {
-
+    if (currentOperator !== null) evaluate();
     firstOperand = currentOperationScreen.textContent;
     currentOperator = operator;
     lastOperationScreen.textContent = `${firstOperand} ${currentOperator}`;
@@ -55,20 +56,22 @@ function evaluate() {
         alert("You can't divide by zero!");
         return;
     };
-    //operate(firstOperand, secondOperand, operator);
+    secondOperand = currentOperationScreen.textContent;
+    currentOperationScreen.textContent = operate(firstOperand, secondOperand, currentOperator);
+    lastOperationScreen.textContent = `${firstOperand} ${currentOperator} ${secondOperand} =`;
 };
 
 function resetScreen() {
-    currentOperationScreen.textContent = ''
-    shouldResetScreen = false
+    currentOperationScreen.textContent = '';
+    shouldResetScreen = false;
 };
 
 function clearScreen() {
     currentOperationScreen.textContent = '0'
     lastOperationScreen.textContent = '';
-    // firstOperand = ''
-    // secondOperand = ''
-    // currentOperation = null
+    firstOperand = '';
+    secondOperand = '';
+    currentOperator = null;
 };
 
 // Deze functie voert een bewerking uit (toevoegen, aftrekken, vermenigvuldigen, delen) op twee getallen, afhankelijk van de operator
