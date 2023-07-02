@@ -1,48 +1,47 @@
-// declaratie van variabelen om de getallen en de operator voor de bewerking te bevatten
+// Variabelen voor de operanden en operator
 let firstOperand = '';
 let secondOperand = '';
 let currentOperator = null;
 let shouldResetScreen = false;
 
-// Nodelist
+// Selecteer alle nummer- en operator knoppen
 const numberButtons = document.querySelectorAll('[data-number]');
 const operatorButtons = document.querySelectorAll('[data-operator]');
 
-// Tag clear button
+// Selecteer specifieke knoppen op basis van hun id
 const clearButton = document.getElementById('clearButton');
-// Tag equals button
 const equalsButton = document.getElementById('equalsButton');
-// Tag dot button
 const dotButton = document.getElementById('dotButton');
-// Tag last operation screen
+const deleteButton = document.getElementById('deleteButton');
+
+// Selecteer schermen voor de laatste en huidige bewerking
 const lastOperationScreen = document.getElementById('lastOperationScreen');
-// Tag current operation screen
 const currentOperationScreen = document.getElementById('currentOperationScreen');
 
-// call clearScren function when clearButton is clicked
+// Voeg event listeners toe aan de specifieke knoppen
 clearButton.addEventListener('click', clearScreen);
-// call evaluate function when equalsButton is clicked
 equalsButton.addEventListener('click', evaluate);
-// Test for the dot button
 dotButton.addEventListener('click', appendDot);
+deleteButton.addEventListener('click', deleteInput);
 
-// numberButton Listener
+// Voor elke nummerknop, voeg een event listener toe die het getal aan het scherm toevoegt
 numberButtons.forEach((button) =>
     button.addEventListener('click', () => appendNumber(button.textContent))
 );
 
-// operatorButton Listener
+// Voor elke operator knop, voeg een event listener toe die de operator instelt
 operatorButtons.forEach((button) =>
     button.addEventListener('click', () => setOperator(button.textContent))
 );
 
-// To append a number
+// Functie om een nummer aan het scherm toe te voegen
 function appendNumber(number) {
     if (currentOperationScreen.textContent === '0' || shouldResetScreen)
         resetScreen();
-    currentOperationScreen.textContent += number
+    currentOperationScreen.textContent += number;
 };
 
+// Functie om een operator in te stellen
 function setOperator(operator) {
     if (currentOperator !== null) evaluate();
     firstOperand = currentOperationScreen.textContent;
@@ -51,8 +50,8 @@ function setOperator(operator) {
     shouldResetScreen = true;
 };
 
+// Functie om de berekening te evalueren
 function evaluate() {
-
     if (currentOperator === '/' && currentOperationScreen.textContent === '0') {
         alert("You can't divide by zero!");
         return;
@@ -64,19 +63,22 @@ function evaluate() {
     lastOperationScreen.textContent = `${firstOperand} ${currentOperator} ${secondOperand} =`;
 };
 
+// Functie om het scherm te resetten
 function resetScreen() {
     currentOperationScreen.textContent = '';
     shouldResetScreen = false;
 };
 
+// Functie om het scherm en de variabelen te wissen
 function clearScreen() {
-    currentOperationScreen.textContent = '0'
+    currentOperationScreen.textContent = '0';
     lastOperationScreen.textContent = '';
     firstOperand = '';
     secondOperand = '';
     currentOperator = null;
 };
 
+// Functie om een decimale punt aan het scherm toe te voegen
 function appendDot() {
     if (shouldResetScreen) resetScreen();
     if (currentOperationScreen.textContent === '') {
@@ -88,15 +90,20 @@ function appendDot() {
     currentOperationScreen.textContent += '.';
 };
 
+// Functie om het laatste getal of teken van het scherm te verwijderen
+function deleteInput() {
+    currentOperationScreen.textContent = currentOperationScreen.textContent.slice(0, -1);
+};
+
+// Functie om het resultaat af te ronden tot op de duizendste
 function roundResult(number) {
     return Math.round(number * 1000) / 1000;
 };
 
-// Deze functie voert een bewerking uit (toevoegen, aftrekken, vermenigvuldigen, delen) op twee getallen, afhankelijk van de operator
+// Functie om een bewerking uit te voeren op basis van de operator
 function operate(num1, num2, operator) {
     num1 = Number(num1);
     num2 = Number(num2);
-
     switch (operator) {
         case "+":
             return add(num1, num2);
@@ -112,19 +119,16 @@ function operate(num1, num2, operator) {
     }
 };
 
-// Functie die twee getallen bij elkaar optelt
+// Basis wiskundige functies
 function add(num1, num2) {
     return num1 + num2;
 };
-// Functie die het tweede getal van het eerste aftrekt
 function subtract(num1, num2) {
     return num1 - num2;
 };
-// Functie die twee getallen vermenigvuldigt
 function multiply(num1, num2) {
     return num1 * num2;
 };
-// Functie die het eerste getal door het tweede deelt
 function divide(num1, num2) {
     return num1 / num2;
 };

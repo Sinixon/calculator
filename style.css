@@ -1,74 +1,80 @@
+/* Root level variabelen voor kleuren en border radius */
 :root {
-    --calculatorColor: #699;
-    --screenColor: rgb(200, 195, 195);
-    --numberButtonColor: beige;
-    --operatorButtonColor: rgba(245, 245, 220, 0.487);
-    --borderColor: black;
-    --radius: 5px;
+    --calculatorColor: #699; /* Kleur van de rekenmachine */
+    --screenColor: rgb(200, 195, 195); /* Kleur van het scherm van de rekenmachine */
+    --numberButtonColor: beige; /* Kleur van de getallen knoppen op de rekenmachine */
+    --operatorButtonColor: rgba(245, 245, 220, 0.487); /* Kleur van de operator knoppen op de rekenmachine */
+    --borderColor: black; /* Kleur van de randen */
+    --radius: 5px; /* Border radius voor afgeronde hoeken */
 }
 
+/* Stijlen voor het main element */
 .main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 75vh;
-    min-height: 500px;
-    padding: 10px;
-    margin-top: 50px;
-    border: solid violet;
-    border-radius: 15px;
+    display: flex; /* Maakt het mogelijk om child elementen in een rij of kolom te ordenen */
+    align-items: center; /* Centreert child elementen verticaal */
+    justify-content: center; /* Centreert child elementen horizontaal */
+    height: 75vh; /* Hoogte van het main element is 75% van de viewport hoogte */
+    min-height: 500px; /* Minimale hoogte van het main element is 500px */
+    padding: 10px; /* Ruimte tussen de inhoud en de rand van het main element */
+    margin-top: 50px; /* Ruimte boven het main element */
+    border-radius: var(--radius); /* Afgeronde hoeken */
 }
 
+/* Stijlen voor de calculator */
 .calculator {
-    width: 400px;
-    border: solid var(--borderColor);
-    border-radius: var(--radius);
-    padding: 20px;
-    background-color: var(--calculatorColor);
+    width: 400px; /* Breedte van de calculator */
+    border: solid var(--borderColor); /* Rand rondom de calculator */
+    border-radius: var(--radius); /* Afgeronde hoeken van de calculator */
+    padding: 20px; /* Ruimte tussen de inhoud en de rand van de calculator */
+    background-color: var(--calculatorColor); /* Achtergrondkleur van de calculator */
 }
 
+/* Stijlen voor het scherm van de calculator */
 .screen {
-    text-align: right;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    background-color: var(--screenColor);
-    border: solid var(--borderColor);
-    border-radius: var(--radius);
-    font-size: 20px;
+    text-align: right; /* Tekst wordt rechts uitgelijnd */
+    padding: 10px 20px; /* Ruimte tussen de inhoud en de rand van het scherm */
+    margin-bottom: 10px; /* Ruimte onder het scherm */
+    background-color: var(--screenColor); /* Achtergrondkleur van het scherm */
+    border: solid var(--borderColor); /* Rand rondom het scherm */
+    border-radius: var(--radius); /* Afgeronde hoeken van het scherm */
+    font-size: 20px; /* Lettergrootte van het scherm */
 }
 
+/* Stijlen voor het scherm waar de laatste bewerking getoond wordt */
 .screen-last {
-    min-height: 32px;
-    font-size: 20px;
+    min-height: 32px; /* Minimale hoogte van het scherm */
+    font-size: 20px; /* Lettergrootte */
 }
 
+/* Stijlen voor het scherm waar de huidige bewerking getoond wordt */
 .screen-current {
-    min-height: 55px;
-    font-size: 40px;
+    min-height: 55px; /* Minimale hoogte van het scherm */
+    font-size: 40px; /* Lettergrootte */
 }
 
+/* Stijlen voor de grid layout van de knoppen */
 .buttonsGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: grid; /* Maakt een grid layout */
+    grid-template-columns: repeat(4, 1fr); /* Maakt vier kolommen van gelijke breedte */
+    grid-gap: 10px; /* Ruimte tussen de grid items */
 }
 
+/* Stijlen voor knoppen die twee kolommen in beslag nemen */
 .span-2-button {
-    grid-column: span 2;
-    background-color: rgba(255, 106, 106, 0.896);
+    grid-column: span 2; /* Neemt twee kolommen in beslag */
+    background-color: rgba(255, 106, 106, 0.896); /* Achtergrondkleur van de knop */
 }
 
+/* Stijlen voor alle knoppen */
 button {
-    border-radius: var(--radius);
-    border: solid var(--borderColor);
-    background-color: var(--numberButtonColor);
-    padding: 20px;
-    font-size: 19px;
+    border-radius: var(--radius); /* Afgeronde hoeken */
+    border: solid var(--borderColor); /* Rand rondom de knop */
+    background-color: var(--numberButtonColor); /* Achtergrondkleur van de knop */
+    padding: 20px; /* Ruimte tussen de inhoud en de rand van de knop */
+    font-size: 19px; /* Lettergrootte van de knop */
 }
 
+/* Stijlen voor de operator knoppen */
 .operator-button {
-    background-color: var(--operatorButtonColor);
-}
-
-.number-button {
-    color: black;
+    background-color: var(--operatorButtonColor); /* Achtergrondkleur van de operator knoppen */
 }
