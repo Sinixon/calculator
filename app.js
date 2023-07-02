@@ -1,5 +1,6 @@
 // declaratie van variabelen om de getallen en de operator voor de bewerking te bevatten
 let firstOperand = '';
+let currentOperator = null;
 let num1;
 let operator;
 let num2;
@@ -11,13 +12,17 @@ const operatorButtons = document.querySelectorAll('[data-operator]');
 
 // Tag clear button
 const clearButton = document.getElementById('clearButton');
+// Tag equals button
+const equalsButton = document.getElementById('equalsButton');
 // Tag last operation screen
 const lastOperationScreen = document.getElementById('lastOperationScreen');
 // Tag current operation screen
 const currentOperationScreen = document.getElementById('currentOperationScreen');
 
 // call clearScren function when clearButton is clicked
-clearButton.addEventListener('click', clearScreen)
+clearButton.addEventListener('click', clearScreen);
+// call evaluate function when equalsButton is clicked
+equalsButton.addEventListener('click', evaluate);
 
 // numberButton Listener
 numberButtons.forEach((button) =>
@@ -26,22 +31,31 @@ numberButtons.forEach((button) =>
 
 // operatorButton Listener
 operatorButtons.forEach((button) =>
-    button.addEventListener('click', () => appendOperator(button.textContent))
-
+    button.addEventListener('click', () => setOperator(button.textContent))
 );
 
 // To append a number
 function appendNumber(number) {
     if (currentOperationScreen.textContent === '0' || shouldResetScreen)
-        resetScreen()
+        resetScreen();
     currentOperationScreen.textContent += number
 };
 
-function appendOperator(operator) {
+function setOperator(operator) {
+
     firstOperand = currentOperationScreen.textContent;
     currentOperator = operator;
     lastOperationScreen.textContent = `${firstOperand} ${currentOperator}`;
     shouldResetScreen = true;
+};
+
+function evaluate() {
+
+    if (currentOperator === '/' && currentOperationScreen.textContent === '0') {
+        alert("You can't divide by zero!");
+        return;
+    };
+    //operate(firstOperand, secondOperand, operator);
 };
 
 function resetScreen() {
