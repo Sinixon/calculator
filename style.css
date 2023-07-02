@@ -5,7 +5,7 @@
     --operatorButtonColor: rgba(245, 245, 220, 0.487);
     --borderColor: black;
     --radius: 5px;
-    }
+}
 
 .main {
     display: flex;
@@ -29,12 +29,10 @@
 
 .screen {
     text-align: right;
-    padding: 20px;
+    padding: 35px 20px 20px 20px;
     margin-bottom: 10px;
     background-color: var(--screenColor);
     border: solid var(--borderColor);
-    border-radius: var(--radius);
-    font-size: 20px;
 }
 
 .buttonsGrid {

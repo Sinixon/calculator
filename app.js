@@ -2,13 +2,51 @@
 let num1;
 let operator;
 let num2;
+let shouldResetScreen = false;
 
+// Nodelist
 const numberButtons = document.querySelectorAll('[data-number]');
 const operatorButtons = document.querySelectorAll('[data-operator]');
 
+// Tag clear button
+const clearButton = document.getElementById('clearButton');
+
+// Tag current operation screen
+const currentOperationScreen = document.getElementById('currentOperationScreen')
+
+// call clearScreen function when clearButton is clicked
+clearButton.addEventListener('click', clearScreen)
+
+// numberButton Listener
 numberButtons.forEach((button) =>
-    button.addEventListener('click', () => console.log(69))
+    button.addEventListener('click', () => appendNumber(button.textContent))
 );
+
+// operatorButton Listener
+operatorButtons.forEach((button) =>
+    button.addEventListener('click', () => console.log("test"))
+);
+
+// To append a number
+function appendNumber(number) {
+    if (currentOperationScreen.textContent === '0' || shouldResetScreen)
+        resetScreen()
+    currentOperationScreen.textContent += number
+}
+
+// Reset the screen
+function resetScreen() {
+    currentOperationScreen.textContent = ''
+    shouldResetScreen = false
+}
+
+function clearScreen() {
+    currentOperationScreen.textContent = '0'
+    // lastOperationScreen.textContent = ''
+    // firstOperand = ''
+    // secondOperand = ''
+    // currentOperation = null
+}
 
 // Deze functie voert een bewerking uit (toevoegen, aftrekken, vermenigvuldigen, delen) op twee getallen, afhankelijk van de operator
 function operate(num1, num2, operator) {
